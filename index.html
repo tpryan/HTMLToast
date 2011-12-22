@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Toast Demo</title>
+
+<style>
+
+	body{
+		font-size: 24px;
+	}
+
+	#toast{
+		position: fixed;
+		top: 20px;
+		left: 50%;
+		width: 200px;
+		margin-left: -100px;
+		border: 1px solid #666;
+		background-color: #B1BCCF;
+		padding: 10px 0 ;
+		text-align:center;
+		opacity: .9;
+		
+		/*The good stuff */
+		-webkit-transition: opacity 0.5s ease-out;  /* Saf3.2+, Chrome */
+		-moz-transition: opacity 0.5s ease-out;  /* FF4+ */
+		-ms-transition: opacity 0.5s ease-out;  /* IE10? */
+		-o-transition: opacity 0.5s ease-out;  /* Opera 10.5+ */
+		transition: opacity 0.5s ease-out;	
+		
+	}
+	
+</style>
+
+<script type="text/javascript">
+
+	var intervalCounter = 0;
+
+	function hideToast(){
+		var alert = document.getElementById("toast");
+		alert.style.opacity = 0;
+		clearInterval(intervalCounter);
+	}
+	
+	function drawToast(message){
+		
+		var alert = document.getElementById("toast");
+		
+		if (alert == null){
+			var toastHTML = '<div id="toast">' + message + '</div>';
+			document.body.insertAdjacentHTML('beforeEnd', toastHTML);
+		}
+		else{
+			alert.style.opacity = .9;
+		}
+		
+		
+		intervalCounter = setInterval("hideToast()", 1000);
+	}
+	
+	function save(){
+		drawToast("Item saved");
+	}
+	
+</script>
+    
+</head>
+
+<body>
+	
+	<p>Craft beer sustainable fap put a bird on it, biodiesel squid raw denim 
+		mcsweeney's banksy four loko synth. Put a bird on it gluten-free VHS 
+		terry richardson. PBR mcsweeney's skateboard, fanny pack butcher 
+		bicycle rights freegan ethical tattooed stumptown. Echo park 
+		farm-to-table brunch before they sold out. Hoodie blog salvia, fixie 
+		craft beer quinoa wolf thundercats biodiesel vinyl mcsweeney's 
+		portland. Master cleanse art party mlkshk readymade, squid jean 
+		shorts high life yr. Banksy tattooed letterpress, brunch scenester 
+		cred four loko.</p>
+	<button onclick="save()">Save</button>
+
+</body>
+</html>
